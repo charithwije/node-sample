@@ -51,7 +51,13 @@ var removeNote = (title) => {
 var fetchNote = (title) => {
     var notes = getNotesFromfile('./playground/notes.json');
     var serachResults = notes.filter(note => note.title === title);
-    return serachResults;
+    if(serachResults.length > 0){
+        return serachResults;
+    }
+    else{
+        console.log('no matching note found');
+    }
+    
 }
 
 module.exports = {

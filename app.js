@@ -30,7 +30,12 @@ else if(command === 'remove') {
 	}
 }
 else if(command === 'fetch') {
-	
+	if(validateInput(argv.title,'title')){
+		let result = notes.fetchNote(argv.title);
+		if(result){
+			console.log(result);
+		}
+	}
 }
 else{
 	console.log('Invalid or no command !');
