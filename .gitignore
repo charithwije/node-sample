@@ -1,4 +1,8 @@
 .vscode/launch.json
 node_modules
 COT
+<<<<<<< HEAD
 playground/notes.json
+=======
+package-lock.json
+>>>>>>> 16fa795cf4717570083b8cb1eb1c8b8bb02d152c
