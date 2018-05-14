@@ -23,6 +23,7 @@ var addNote = (title, body) => {
     var duplicateNote = notes.filter(x => x.title === title);
     if(duplicateNote.length === 0){
         notes.push(note);
+        debugger;
         saveNotesToFile(notes);
         return note;
     }
@@ -33,6 +34,8 @@ var addNote = (title, body) => {
 }
 
 var listtAllNotes = () => {  
+
+    
 }
 
 var removeNote = (title) => {
