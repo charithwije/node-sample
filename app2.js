@@ -1,7 +1,5 @@
 const http = require('http');
 const fs = require('fs');
-
-
 const express = require('express');
 
 const app = express();
@@ -18,8 +16,6 @@ app.get('/', (req, res) => {
     res.sendFile('/index.html', { root: __dirname });
 });
 
-
-
 app.get('/getItems', (req, res) => {
     res.json({'name':'Grant', 'age': 15});
 });
@@ -35,7 +31,6 @@ app.put('/update-data', (req, res) => {
 app.delete('/delete-data', (req, res) => {
     res.send('DELETE Request');
 });
-
 
 var server = app.listen(port, ()=>{
     console.log('\x1b[33m%s\x1b[0m',`Server is running on port ${port}`);

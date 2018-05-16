@@ -13,7 +13,6 @@ var validateInput = (inputValue, valueName) => {
 	}
 }
 
-
 if(command === 'add'){
 	if(validateInput(argv.title,'title') && validateInput(argv.body,'body')){
 		let note = notes.addNote(argv.title, argv.body);
