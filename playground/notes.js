@@ -33,9 +33,16 @@ var addNote = (title, body) => {
     }
 }
 
-var listtAllNotes = () => {  
-
-    
+var listtAllNotes = (title) => {  
+    var notes = getNotesFromfile('./playground/notes.json');
+    if(notes.length > 0){
+      notes.forEach(element => {
+        console.log(`title: ${element.title} body: ${element.body}`)  
+      });
+    }
+    else{
+      console.log('There are no notes..');
+    }
 }
 
 var removeNote = (title) => {

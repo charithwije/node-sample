@@ -37,6 +37,10 @@ else if(command === 'fetch') {
 		}
 	}
 }
+
+else if(command === 'listAll') {
+	let result = notes.listtAllNotes(argv.title);
+}
 else{
 	console.log('Invalid or no command !');
 }
