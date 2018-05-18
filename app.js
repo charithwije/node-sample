@@ -1,7 +1,20 @@
 const yargs = require('yargs');
 const notes = require('./playground/notes');
 
-var argv = yargs.argv;
+var argv = yargs
+.command('add','adding a new note',{
+	title:{
+		describe: 'title of the note',
+		demand: true,
+		alias: 't'
+	},
+	body:{
+		describe: 'body of the note',
+		demand: true,
+		alias: 'b'
+	}}
+).help()
+.argv;
 var command = argv._[0];
 
 var validateInput = (inputValue, valueName) => {
@@ -12,7 +25,6 @@ var validateInput = (inputValue, valueName) => {
 		return true;
 	}
 }
-
 
 if(command === 'add'){
 	if(validateInput(argv.title,'title') && validateInput(argv.body,'body')){
