@@ -9,11 +9,11 @@ var port = 5000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('json spaces', 40);
-//app.use(express.static(__dirname + '/COT'));
+app.use(express.static(__dirname + '/COT'));
 
 app.get('/', (req, res) => {
-    //res.sendFile('./COT/index.html', { root: __dirname });
-    res.sendFile('/index.html', { root: __dirname });
+    res.sendFile('./COT/index.html', { root: __dirname });
+    // res.sendFile('/index.html', { root: __dirname });
 });
 
 app.get('/getItems', (req, res) => {
