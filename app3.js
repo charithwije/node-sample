@@ -11,15 +11,15 @@ app.set('view engine', hbs);
 app.get('/', (req, res) => {
     res.render('home.hbs',
         {
-            title: 'This is the home page',
+            headerText: 'This is the home page',
             bodyText: 'Welcome to home page',
             year: new Date().getFullYear()
         }
     );
-})
+});
 
 app.get('/about', (req, res) => {
-    res.render('about.hbs', { year: new Date().getFullYear() });
+    res.render('about.hbs', { headerText: 'This is About page',year: new Date().getFullYear() });
 });
 
 
