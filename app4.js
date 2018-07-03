@@ -10,31 +10,39 @@ var db;
 app.set('view engine', hbs);
 app.use(bodyParser.urlencoded({ extended: true }));
 
-MongoClient.connect(dbString, (error, client)=>{
+MongoClient.connect(dbString, (error, client) => {
     if(error){
         console.log(error);
     }
     db = client.db('quotes-db');
-    app.listen('5000', ()=>{
+    app.listen('5000', () => {
         console.log('server is up on port 5000');
     });
 });
 
 app.get('/',(req, res)=>{
-    res.render('form.hbs');
+    var cursor = db.collection('quotes').find().toArray((error, results)=>{
+        if(error){
+            console.log(error);
+        }
+        else{
+            console.log(results);
+            res.render('form.hbs',{results: results});
+        }
+        
+    });
+    
 });
 
-app.post('/quotes',(req, res)=>{
-   
+app.post('/quotes',(req, res) => {
     db.collection('quotes').save(req.body, (error, result) => {
         if(error){
             console.log(error);
         }
-        console.log('saved to database')
-        res.redirect('/')
+        console.log('saved to database');
+        res.redirect('/');
     });
 });
-
 
 
 

@@ -4,3 +4,10 @@
     <input type="text" placeholder="quote" name="quote">
     <button type="submit">Submit</button>
 </form>
+<ul>
+    {{#each results}}
+    <li>
+       {{this.name}}
+    </li>
+    {{/each}}
+</ul>
