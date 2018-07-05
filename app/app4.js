@@ -2,13 +2,20 @@ const express = require('express');
 const hbs = require('hbs');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient; 
+const path = require('path');
 
 var app = express();
 var dbString = 'mongodb://charithw:cbacharith2@ds125341.mlab.com:25341/quotes-db';
 var db;
 
+console.log('*****',__dirname);
+
 app.set('view engine', hbs);
 app.use(bodyParser.urlencoded({ extended: true }));
+var relPath = path.resolve('./front-end/E-shop/dist/E-shop');
+app.use(express.static(relPath));
+// app.use(express.static('C:/Users/CharithWijenayake/Desktop/Samples/node-example/front-end/E-shop/dist/E-shop'));
+// app.use(express.static(__dirname + '/COT'));
 
 MongoClient.connect(dbString, (error, client) => {
     if(error){
@@ -27,7 +34,9 @@ app.get('/',(req, res)=>{
         }
         else{
             console.log(results);
-            res.render('form.hbs',{results: results});
+            // res.render('form.hbs',{results: results});
+            res.sendFile(path.resolve('./front-end/E-shop/dist/E-shop/index.html'));
+            // res.sendFile('./COT/index.html', { root: __dirname });
         }
         
     });
